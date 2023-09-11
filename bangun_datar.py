@@ -30,6 +30,14 @@ class Trapesium(BangunDatar):
         self.tinggi = tinggi
     def hitung_luas(self):
         return 0.5 * (self.atas + self.bawah) * self.tinggi
+class BelahKetupat(BangunDatar):
+    def __init__(self, diagonal1, diagonal2):
+        self.diagonal1 = diagonal1
+        self.diagonal2 = diagonal2
+    
+    def hitung_luas(self):
+        return 0.5 * self.diagonal1 * self.diagonal2
+    
 # Input jumlah bangun datar
 n = int(input("Masukkan jumlah bangun datar: "))
 # list untuk menyimpan bangun datar
@@ -37,7 +45,7 @@ bangun_datar_list = []
 # Meminta input dan membuat objek bangun datar sesuai dengan jenisnya
 for i in range(n):
     print(f"Bangun datar ke-{i+1}:")
-    jenis = input("Jenis (persegi/persegi panjang/segitiga/lingkaran/trapesium): ")
+    jenis = input("Jenis (persegi/persegi panjang/segitiga/lingkaran/trapesium/belah ketupat): ")
     if jenis == "persegi":
         sisi = float(input("Panjang sisi: "))
         bangun = Persegi(sisi)
@@ -57,6 +65,10 @@ for i in range(n):
         bawah = float(input("Panjang sisi bawah: "))
         tinggi = float(input("Tinggi: "))
         bangun = Trapesium(atas, bawah, tinggi)
+    elif jenis == "belah ketupat":
+        diagonal1 = float(input("Diagonal 1: "))
+        diagonal2 = float(input("Diagonal 2: "))
+        bangun = BelahKetupat(diagonal1, diagonal2)
     else:
         print("Jenis bangun datar tidak valid.")
         continue
